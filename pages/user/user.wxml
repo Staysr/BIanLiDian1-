@@ -1,0 +1,55 @@
+<view class="container">
+    <image class="userBg" src="../image/userBg.png"></image>
+    <view class="userHeaderBox boxShadow">
+        <view>{{user.nickName}}</view>
+        <view class="userAvatarBox">
+            <image class="userAvatar" src="{{userdata.avatarUrl?userdata.avatarUrl:'../image/userAvatar.png'}}" bindtap="jump" data-url="../userEdit/userEdit"></image>
+        </view>
+    </view>
+<!-- 设置管理 -->
+<view style="margin-top: 139rpx;" class="cu-list menu card-menu margin-top-xl margin-bottom-xl shadow-lg radius">
+    <view class="cu-item arrow">
+      <view class="content" bindtap="usermessage">
+        <image style="margin-bottom:7rpx;" src="../image/message.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">个人信息管理</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/addressList/addressList?delAddress=true" hover-class="none">
+        <image style="margin-bottom: 7rpx;" src="../image/site.png" class="png" mode="aspectFit"></image>
+        <text class="text-grey">地址管理</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/log/log" hover-class="none">
+        <text class="cuIcon-formfill text-green"></text>
+        <text class="text-grey">日志</text>
+      </navigator>
+    </view>
+    <view class="cu-item arrow">
+      <view class="content" bindtap="showQrcode">
+        <text class="cuIcon-appreciatefill text-red"></text>
+        <text class="text-grey">赞赏支持</text>
+      </view>
+    </view>
+    <view class="cu-item arrow">
+      <button class="cu-btn content" open-type="feedback">
+        <text class="cuIcon-writefill text-cyan"></text>
+        <text class="text-grey">意见反馈</text>
+      </button>
+    </view>
+    <view class="cu-item arrow">
+      <navigator class="content" url="/pages/about/test/list" hover-class="none">
+        <text class="cuIcon-creativefill text-orange"></text>
+        <text class="text-grey">Bug测试</text>
+      </navigator>
+    </view>
+  </view>
+  <view class="cu-tabbar-height"></view>
+    <!--注册弹框-->
+    <dialog id="registerDialog" content="您暂时还没有店铺，是否现在前去注册。" bindconfirmEvent="jump" data-url="../registerShop/registerShop"></dialog>
+    <!--未通过-->
+    <dialog id="notThroughDialog" content="抱歉,您的申请未通过！详情请致电123456789" confirmText="重新注册" bindconfirmEvent="jump" data-url="../registerShop/registerShop"></dialog>
+    <!--审核中-->
+    <dialog id="reviewDialog" isCancel="{{false}}" content="您的信息正在审核中,请耐心等待!" bindconfirmEvent="hideReviewDialog"></dialog>
+</view>

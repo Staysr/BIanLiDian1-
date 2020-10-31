@@ -1,0 +1,33 @@
+<!--pages/addressList/addressList.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">地址列表</view>
+</cu-custom>
+	<!-- 地址列表 -->
+	<view wx:for="{{address}}" wx:key="index" data-id='{{item.id}}' class="orderadd">
+		<view class="orderadd-header" wx:if="{{select == 'false'}}">
+			<text wx:if="{{item.states == 1}}" class='orderadd-header-tag'>默认地址</text>
+			<text wx:if="{{item.states == 0}}" class='orderadd-header-tag-green' data-id='{{item.id}}' bindtap='setDefault'>设为默认</text>
+			<button wx:if="{{delAddress == 'true'}}" class='orderadd-header-del' data-id='{{item.id}}' bindtap='delAddress'>删除</button>
+      <button wx:if="{{delAddress != 'true'}}" class='orderadd-header-del' ></button>
+		</view> 
+		<view class="orderadd-content" data-id='{{item.id}}' data-type='1' data-content='{{item.content}}'   data-city='{{item.city}}' data-phone='{{item.phone}}'   data-username='{{item.username}}' bindtap="{{delAddress=='true'?'':'editAddress'}}">
+			<view class="orderadd-top">
+				<text class='orderadd-user'>收货人：{{item.username}}</text>
+				<text class='orderadd-num'>{{item.phone}}</text>
+			</view>
+			<view class="orderadd-bottom">
+				<text class='orderadd-detail'>收货地址：{{item.city}} {{item.content}}</text>
+				<image wx:if="{{delAddress != 'true'}}" class='right-img' src='../image/right1.png'></image>
+			</view>
+		</view>
+
+	<view class="noItem">
+		<view wx:if="{{addresslength == 0}}">
+			<image class="noItemImg" src="../image/searchNoItem.png"></image>
+			<view class="noItemText">没有可用收货地址，请添加</view>
+		</view>
+	</view>
+</view>
+<image wx:if="{{jiazai}}" style="height: 209rpx;position: fixed;top: 520rpx;" src="../image/loading-white.gif" mode="aspectFit" class="gif-white response"></image>
+<view class="addressBtn" bindtap="address" data-type="新建">新建收货地址</view>

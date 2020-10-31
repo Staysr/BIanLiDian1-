@@ -1,0 +1,54 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/order/order",
+    "pages/submitOrder/submitOrder",
+    "pages/user/user",
+    "pages/addressList/addressList",
+    "pages/addressEdit/addressEdit",
+    "pages/usermessage/usermessage",
+    "pages/usersite/usersite"
+    
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "cu-custom": "/components/cu-custom"
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#ff9966",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/image/tabBar/home.png",
+        "selectedIconPath": "pages/image/tabBar/home_on.png"
+      },
+      {
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "pages/image/tabBar/order.png",
+        "selectedIconPath": "pages/image/tabBar/order_on.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "pages/image/tabBar/user.png",
+        "selectedIconPath": "pages/image/tabBar/user_on.png"
+      }
+    ],
+    "position": "bottom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,53 @@
+<!--pages/usermessage/usermessage.wxml-->
+<cu-custom bgColor="bg-white" isBack="{{true}}" class="action">
+	<view slot="content" style='color:block'>信息编辑</view>
+</cu-custom>
+<!-- 个人信息编辑 -->
+<view>
+	<form bindsubmit="formSubmit">
+		<!-- 头像 -->
+		<view class="cu-bar bg-white" style="margin-top: 8rpx;height:120rpx;text-align: center;line-height: 120rpx;">
+			<view class="action">
+				头像
+			</view>
+			<view bindtap="goimg"  class="cu-avatar lg round margin-left" style="background-image:url({{imgList==''?userdata.avatarUrl:imgList}});margin-right: 26rpx;"></view>
+		</view>
+		<!-- 表单 -->
+		<view class="cu-form-group" style="margin-top:3rpx;">
+			<view class="title">姓名:</view>
+			<input style="text-align: right;" placeholder="请填写姓名" maxlength="4" value="{{userdata.name}}" name="username"></input>
+		</view>
+    <view class="cu-form-group">
+			<view class="title">手机号:</view>
+			<input style="text-align: right;" placeholder="请填写手机号" maxlength="11" value="{{userdata.phone}}" name="phone"></input>
+		</view>
+    <view class="cu-form-group">
+			<view class="title">邮箱:</view>
+			<input style="text-align: right;" placeholder="请填写邮箱" maxlength="20" value="{{userdata.mailbox}}" name="mailbox"></input>
+		</view>
+     <!-- <view class="cu-form-group">
+			<view class="title">住址:</view>
+			<input style="text-align: right;" placeholder="请填写住址" maxlength="20" value="{{userdata.city}}{{userdata.country}}{{userdata.province}}" name="address"></input>
+		</view> -->
+    <button style="margin-top: 150rpx;margin-left: 24rpx;margin-right: 24rpx;width: 94%;" formType="submit" class="cu-btn block bg-blue margin-tb-sm lg">
+      <text wx:if="{{type}}" class="cuIcon-loading2 iconfont-spin"></text> 保存
+    </button>
+    <input name="imgurl" hidden="true" value="{{imgurl}}"></input>
+    <input name="avatarUrl" hidden="true" value="{{userdata.avatarUrl}}"></input>
+    
+	</form>
+
+<swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+  <block wx:for="{{msgList}}">
+   <navigator url="/pages/index/index?title={{item.url}}" open-type="navigate">
+    <swiper-item>
+     <view class="swiper_item">{{item.title}}</view>
+    </swiper-item>
+   </navigator>
+  </block>
+ </swiper>
+
+
+
+  <image wx:if="{{jiazai}}" style="height: 209rpx;position: fixed;top: 520rpx;" src="../image/loading-white.gif" mode="aspectFit" class="gif-white response"></image>
+</view>

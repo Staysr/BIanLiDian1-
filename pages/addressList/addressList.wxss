@@ -1,0 +1,235 @@
+/* pages/addressList/addressList.wxss */
+page {
+  background-color: #fff;
+}
+
+.addressItem {
+  border-bottom: 1rpx solid #e6e6e6;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+}
+
+.addressItemContent {
+  width: 100%;
+  padding-top: 39rpx;
+  padding-bottom: 39rpx;
+  margin-right: 0;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(140rpx);
+  transform: translateX(140rpx);
+  margin-left: -140rpx;
+}
+
+.del {
+  background-color: #e2393c;
+  width: 140rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(140rpx);
+  transform: translateX(140rpx);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.touch-move-active .addressItemContent,
+.touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.addressDetail {
+  width: 600rpx;
+}
+
+.addressUser {
+  position: relative;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.addressDefault {
+  position: absolute;
+  left: 420rpx;
+  top: 4rpx;
+  width: 74rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  border-radius: 14rpx;
+  background-color: #e2393c;
+}
+
+.addressLocation {
+  font-size: 26rpx;
+  color: #5c5c5c;
+  height: 35rpx;
+  overflow: hidden;
+  margin-top: 5rpx;
+}
+
+.addressEdit {
+  position: absolute;
+  top: 60rpx;
+  right: 0;
+  width: 40rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: right;
+}
+
+.addressEditIcon {
+  width: 28rpx;
+  height: 28rpx;
+}
+
+/*没有搜索结果展示*/
+.noItem {
+  width: 100%;
+  padding-top: 140rpx;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.noItemImg {
+  width: 350rpx;
+  height: 260rpx;
+}
+
+.noItemText {
+  margin-top: 75rpx;
+  font-size: 30rpx;
+  color: #b2b2b2;
+}
+
+.addressBtn {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #fff;
+  background-color: #ff9b39;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.orderadd {
+  width: 100%;
+  background-color: #fff;
+  padding: 30rpx 20rpx;
+  position: relative;
+  font-size: 26rpx;
+  box-sizing: border-box;
+  margin-bottom: 10rpx;
+  border-bottom: 1rpx solid #D4D4D4;
+  height: 230rpx;
+
+}
+
+.orderadd-header {
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: 10rpx;
+  padding-top: 2rpx;
+}
+
+.orderadd-header-tag {
+  background-color: #ef4f4f;
+  color: #fff;
+  padding: 6rpx 12rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  position: relative;
+  top: 46rpx;
+}
+
+.orderadd-header-tag-green {
+  background-color: #04be02;
+  color: #fff;
+  padding: 6rpx 12rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  position: relative;
+  top: 46rpx;
+
+}
+
+.orderadd-header-del {
+  background-color: #fff;
+  float: right;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #666;
+  font-size: 24rpx;
+  border-radius: 4rpx;
+  position: relative;
+  top: 18rpx;
+  left: 112rpx;
+
+}
+
+.orderadd-top {
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+
+.orderadd-num {
+  float: right;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.orderadd-bottom {
+  color: #999;
+  position: relative;
+}
+
+.orderadd-detail {
+  width: 686rpx;
+  display: inline-block;
+}
+
+.right-img {
+  width: 14rpx;
+  height: 24rpx;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.add-button {
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  padding: 20rpx 20rpx 14rpx;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.add-button button {
+  height: 66rpx;
+  line-height: 66rpx;
+  font-size: 26rpx;
+  text-align: center;
+  width: 48%;
+  background-color: #fff !important;
+  color: #666;
+  display: inline-block;
+  border-right: 2rpx solid #e0e0e0 !important;
+}
+
+.add-button button:last-child {
+  float: right;
+}

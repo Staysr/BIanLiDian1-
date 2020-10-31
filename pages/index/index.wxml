@@ -1,0 +1,156 @@
+
+<!-- 商品搜索 -->
+<view class="box seek" style="min-height: 0rpx">
+		<view class="cu-bar search" style="min-height: 0rpx">
+			<view class="search-form round">
+				<text class="cuIcon-search"></text>
+				<input type="text" placeholder="商品名称,商品关键字" confirm-type="search"></input>
+			</view>
+		</view>
+	</view>
+<!-- 商品轮播 -->
+<swiper class="screen-swiper round-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+	<swiper-item wx:for="{{4}}">
+		<image src="https://image.weilanwl.com/img/4x3-{{index+1}}.jpg" mode='aspectFill'></image>
+	</swiper-item>
+</swiper>
+<!-- 商品列表 -->
+<view class="VerticalBox">
+	<scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}" style="height:calc({{shoppingheight}}vh - 375rpx)">
+		<view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{orderlist}}" bindtap='tabSelect' data-orderid="{{item.id}}" data-id="{{index}}">
+			{{item.name}}
+		</view>
+	</scroll-view>
+	<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:calc({{shoppingheight}}vh - 375rpx)" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+		<view class="padding-top padding-lr" wx:for="{{order}}" id="main-{{index}}">
+			<view class="cu-list menu-avatar">
+				<view class="cu-item" style="height:150rpx;">
+					<view data-ordername="{{item.description}}" data-commodityname="{{item.commodityname}}" data-cspecification="{{item.cspecification}}" data-imgurl="{{img}}{{item.image}}" bindtap="showModal" data-target="Image" class="cu-avatar radius lg" style="background-image:url({{img}}{{item.image}});width:110rpx;height:110rpx;flote:left;"></view>
+					<view data-ordername="{{item.description}}" data-commodityname="{{item.commodityname}}" data-cspecification="{{item.cspecification}}" data-imgurl="{{img}}{{item.image}}" bindtap="showModal" data-target="Image" class="content" style="width:45%;height:100%;">
+						<view class="text-pink" style="height:75rpx;line-height:75rpx;">
+							<text   class="text-grey">{{item.commodityname}}</text>
+						</view>
+						<view class="text-gray text-sm flex" style="height:75rpx;line-height:75rpx;">
+							<text style="font-size:30rpx;" class="text-cut">¥{{item.cspecification}}</text>
+						</view>
+					</view>
+					<view class="action" style="width:30%;height:150rpx;">
+						<view style="line-height:170rpx">
+							<view wx:if="{{item.num != 0}}" bindtap="subtract" data-classid="{{orderid}}"  data-orderid="{{item.id}}" data-index="{{index}}" data-isShowShoppingBox="{{isShowShoppingBox}}" data-price="{{item.price}}" data-num="{{item.num}}" class="cu-tag round bg-red sm" style="border:1rpx solid orange;  border-radius:50rpx; text-align: center;  font-size:25rpx; background:#fff;color:orange; height:45rpx;width:45rpx;">-</view>
+							<text wx:if="{{item.num != 0}}"  style="margin-left:15rpx;">{{item.num}}</text>
+							<view bindtap="add" data-isShowShoppingBox="{{isShowShoppingBox}}" data-orderid="{{item.id}}" data-price="{{item.price}}" data-buypay="{{item.buypay}}" data-repertory="{{item.repertory}}" data-index="{{index}}" data-num="{{item.num}}" class="cu-tag round bg-red sm" style="height:45rpx;width:45rpx;border:1rpx solid orange;   text-align: center; font-size:25rpx; position: relative; left: 20rpx; border-radius:50rpx; background:orange;color:#fff;">+</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
+		</view>
+	</scroll-view>
+</view>
+
+<!-- 商品详情 -->
+<view class="cu-modal {{modalName=='Image'?'show':''}}">
+	<view class="cu-dialog">
+		<view class="bg-img" style="background-image: url({{imgurl}});height:200px;">
+			<view class="cu-bar justify-end text-white " style="">
+				<view class="action" bindtap="hideModal">
+					<text class="cuIcon-close "></text>
+				</view>
+			</view>
+		</view>
+		<view class="cu-bar huanhang" style="clear:both;">
+			<view class="cu-capsule round" style="margin-top:10rpx;clear:both;">
+				<view class="cu-tag bg-blue ">
+					商品名称
+				</view>
+				<view class="cu-tag line-blue">
+					{{commodityname}}
+				</view>
+			</view>
+			<view class="cu-capsule round" style="margin-top:10rpx;clear:both">
+				<view class="cu-tag bg-blue ">
+					商品描述
+				</view>
+				<view class="cu-tag line-blue">
+					{{ordername}}
+				</view>
+			</view>
+			<view class="cu-capsule round">
+				<view class="cu-tag bg-blue ">
+					商品规格
+				</view>
+				<view class="cu-tag line-blue">
+					{{cspecification}}
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+<!-- 购物车结算 -->
+
+<view class="shoppingCartBox" wx:if="{{shoppingtype}}">
+	<!--超出配送范围-->
+	<!-- <view class="notIn" wx:if="{{!isIn}}">您选的店铺已超出其配送范围</view> -->
+	<!--购物车计算-->
+	<view class="floatClear" wx:if="{{3}}">
+		<!--是否在配送之内的判断-->
+		<view class="shoppingCart floatLeft"  bindtap="showShoppingBox">
+			<view class="cartImgBox">
+				<image  class="cartImg" src="../image/cart.png"></image>
+				<viwe class="cartNum">{{county}}</viwe>
+			</view>
+			<view class="cartDetail">
+				<view class="cartPrice">￥{{money}}</view>
+				<view class="cartText">￥{{configuration==''?'0':configuration.distribution}}起送 | 配送费￥{{configuration==''?'0':configuration.deliverypay}}</view>
+			</view>
+		</view>
+		<view data-deliverypay="{{configuration==''?'0':configuration.deliverypay}}" data-distribution="{{configuration==''?'0':configuration.distribution}}" data-county="{{county}}"  data-county="{{county}}"  data-money="{{money}}" class="settlementBtn floatLeft {{configuration.distribution<=money?'':'settlementNo'}}" bindtap="{{configuration.distribution<=money?'submitOrder':''}}">提交订单</view>
+	</view>
+</view>
+
+<!--购物商品盒子-->
+<view class="shoppingMask" data-orderid="{{orderid}}" wx:if="{{isShowShoppingBox}}" bindtap="hideShoppingBox"></view>
+<view class="shoppingGoodBox {{isShowShoppingBox?'shoppingGoodBoxOn':''}}">
+	<view class="floatClear shoppingGoodTitle">
+		<view class="floatLeft">
+			购物车
+			<text>(共{{county}}件商品)</text>
+		</view>
+		<view class="floatRight clearCart" data-orderid="{{orderid}}" catchtap="showDialog">
+			<image class="clearCartImg floatLeft" src="../image/clearCart.png"></image>
+			清空购物车
+		</view>
+	</view>
+	<scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:77%;" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+		<view class=" padding-lr" wx:for="{{order}}" id="main-{{index}}">
+    <image data-id="{{item.id}}"  data-orderid="{{orderid}}" bindtap="deleteshop" class="deleteimg" src="../image/delete.png"></image>
+			<view class="cu-list menu-avatar">
+				<view class="cu-item" style="height:150rpx;">
+					<view class="cu-avatar radius lg" style="background-image:url({{img}}{{item.image}});width:110rpx;height:110rpx;flote:left;"></view>
+					<view  class="content" style="width:45%;height:100%;">
+						<view class="text-pink" style="height:75rpx;line-height:75rpx;">
+							<text   class="text-grey">{{item.commodityname}}</text>
+						</view>
+						<view class="text-gray text-sm flex" style="height:75rpx;line-height:75rpx;">
+							<text style="font-size:30rpx;" class="text-cut">¥{{item.cspecification}}</text>
+						</view>
+					</view>
+					<view class="action" style="width:30%;height:150rpx;">
+						<view style="line-height:170rpx">
+							<view wx:if="{{item.num != 0}}" bindtap="subtract" data-classid="{{orderid}}"  data-orderid="{{item.id}}" data-index="{{index}}" data-isShowShoppingBox="{{isShowShoppingBox}}" data-price="{{item.price}}" data-num="{{item.num}}" class="cu-tag round bg-red sm" style="border:1rpx solid orange;  border-radius:50rpx; text-align: center;  font-size:25rpx; background:#fff;color:orange; height:45rpx;width:45rpx;">-</view>
+							<text wx:if="{{item.num != 0}}"  style="margin-left:15rpx;">{{item.num}}</text>
+							<view bindtap="add" data-orderid="{{item.id}}" data-price="{{item.price}}" data-buypay="{{item.buypay}}" data-repertory="{{item.repertory}}"  data-isShowShoppingBox="{{isShowShoppingBox}}" data-index="{{index}}" data-num="{{item.num}}" class="cu-tag round bg-red sm" style="height:45rpx;width:45rpx;border:1rpx solid orange;   text-align: center; font-size:25rpx; position: relative; left: 20rpx; border-radius:50rpx; background:orange;color:#fff;">+</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 配送状态 -->
+	</scroll-view>
+
+	<view wx:if="{{userorderlist}}" class="distributionBox" bindtap="toOrder" data-orderId="1">
+        <image class="distributionBg" src="../image/{{ordercode==106?'dabao':(ordercode==107?'distributionBg':(ordercode==108?'okstus':''))}}.png"></image>
+        <image class="distribution" src="../image/{{ordercode==106?'dabao1':(ordercode==107?'distribution':(ordercode==108?'okstus1':''))}}.gif"></image>
+    </view>
+</view>
+ 

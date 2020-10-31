@@ -1,0 +1,431 @@
+/* pages/goodDetail/goodDetail.wxss */
+/*自定义返回*/
+.backBox {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+  top: 60rpx;
+  left: 25rpx;
+  text-align: center;
+  line-height: 40rpx;
+}
+
+.backImg {
+  width: 16rpx;
+  height: 30rpx;
+}
+
+/*背景图*/
+.goodBg {
+  width: 100%;
+  height: 380rpx;
+}
+
+/*商品信息盒子*/
+.goodDetailBox {
+  position: absolute;
+  top: 300rpx;
+  left: 50%;
+  width: 710rpx;
+  height: 290rpx;
+  margin-left: -355rpx;
+  border-radius: 16rpx;
+  background: #fff;
+  padding: 0 20rpx;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+.goodDetailImg {
+  position: absolute;
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 16rpx;
+  top: -59rpx;
+  left: 56rpx;
+}
+
+.goodName {
+  font-size: 34rpx;
+  color: #333;
+  font-weight: bold;
+  height: 50rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-top: 95rpx;
+}
+
+.goodShop {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.toShopIcon {
+  width: 12rpx;
+  height: 22rpx;
+  margin-left: 12rpx;
+  margin-top: 10rpx;
+}
+
+.goodPriceBox {
+  line-height: 70rpx;
+  margin-top: 30rpx;
+}
+
+.price {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.price>text {
+  color: #e60012;
+  font-size: 34rpx;
+}
+
+.goodNumBtn {
+  width: 44rpx;
+  height: 44rpx;
+  margin-top: 14rpx;
+}
+
+.goodNum {
+  font-size: 34rpx;
+  color: #333;
+  width: 52rpx;
+  text-align: center;
+}
+
+.specBtn {
+  position: relative;
+  width: 100rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  border-radius: 25rpx;
+  background: #ff9b39;
+  color: #333;
+  text-align: center;
+  font-size: 24rpx;
+  margin-top: 14rpx;
+}
+
+.specBtnNum {
+  position: absolute;
+  right: -6rpx;
+  top: -16rpx;
+  width: 30rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  background-color: #e60012;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 16rpx;
+}
+
+/*产品详情块*/
+.goodDescriptionBox {
+  margin-top: 210rpx;
+  padding: 0 40rpx;
+}
+
+.goodDescriptionTitle {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 100rpx;
+  font-weight: bold;
+}
+
+/*.购物车*/
+.shoppingCartBox {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 90rpx;
+  z-index: 200;
+}
+
+.notIn {
+  text-align: center;
+  line-height: 90rpx;
+  background-color: #ccc;
+  color: #fff;
+  font-size: 34rpx;
+}
+
+.shoppingCart {
+  height: 90rpx;
+  width: 73%;
+  background-color: var(--black);
+  position: relative;
+}
+
+.cartImgBox {
+  position: absolute;
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 128rpx;
+  border-radius: 50%;
+  background-color: #3999ff;
+  left: 90rpx;
+  top: -25rpx;
+  text-align: center;
+}
+
+.cartImg {
+  width: 54rpx;
+  height: 46rpx;
+}
+
+.cartNum {
+  position: absolute;
+  top: 0;
+  left: 74rpx;
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #fff;
+  background-color: #e60012;
+  border-radius: 50%;
+}
+
+.cartDetail {
+  padding-left: 220rpx;
+  height: 90rpx;
+  overflow: hidden;
+}
+
+.cartPrice {
+  font-size: 42rpx;
+  color: #fff;
+}
+
+.cartText {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.settlementBtn {
+  width: 27%;
+  font-size: 34rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 90rpx;
+  background-color: var(--orange);
+  position: absolute;
+  right: 0rpx;
+  bottom: 1rpx;
+}
+
+.settlementNo {
+  background-color: var(--grey);
+}
+
+/*购物遮罩*/
+.shoppingMask {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, .5);
+}
+
+/*购物商品盒子*/
+.shoppingGoodBox {
+  position: fixed;
+  z-index: 101;
+  background-color: #fff;
+  width: 100%;
+  height: 800rpx;
+  transition: all linear 0.3s;
+  bottom: -800rpx;
+}
+
+.shoppingGoodBoxOn {
+  bottom: 0;
+}
+
+.shoppingGoodScroll {
+  white-space: nowrap;
+  height: 625rpx;
+}
+
+.shoppingGoodTitle {
+  font-size: 34rpx;
+  color: #333;
+  line-height: 80rpx;
+  padding: 0 20rpx;
+  border-bottom: 1rpx solid #e6e6e6;
+}
+
+.shoppingGoodTitle text {
+  color: #999999;
+  margin-left: 20rpx;
+}
+
+.clearCart {
+  width: 50%;
+  text-align: right;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.clearCartImg {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 19rpx;
+  position: relative;
+  top: 6rpx;
+}
+
+.shoppingGoodItem {
+  border-bottom: 1rpx solid #e6e6e6;
+  padding: 45rpx 0;
+  position: relative;
+}
+
+.shoppingGoodImg {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 4rpx;
+}
+
+.shoppingGoodName {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333;
+  width: 390rpx;
+  line-height: 50rpx;
+  margin-left: 20rpx;
+  overflow: hidden;
+}
+
+.shoppingGoodPrice {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.shoppingGoodPrice>text {
+  font-size: 34rpx;
+  color: #e60012;
+  font-weight: bold;
+}
+
+.shoppingGoodBtnBox {
+  position: absolute;
+  right: 20rpx;
+  bottom: 45rpx;
+  width: 140rpx;
+  height: 44rpx;
+}
+
+.shoppingGoodBtn {
+  width: 44rpx;
+  height: 44rpx;
+}
+
+.shoppingGoodNum {
+  width: 52rpx;
+  line-height: 44rpx;
+  text-align: center;
+  font-size: 34rpx;
+  color: #333;
+}
+
+/*规格盒子遮罩*/
+.specBoxMask {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, .5);
+}
+
+/*规格盒子*/
+.specBox {
+  position: fixed;
+  z-index: 102;
+  background-color: #fff;
+  border-radius: 16rpx;
+  width: 600rpx;
+  top: 450rpx;
+  left: 50%;
+  margin-left: -300rpx;
+  display: none;
+}
+
+.specBoxOn {
+  display: block;
+}
+
+.specBoxHideBtn {
+  position: absolute;
+  width: 22rpx;
+  height: 22rpx;
+  top: 20rpx;
+  right: 20rpx;
+}
+
+.specGoodName {
+  height: 40rpx;
+  font-size: 34rpx;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 37rpx;
+  margin-bottom: 28rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.specScroll {
+  height: 220rpx;
+}
+
+.specText {
+  font-size: 30rpx;
+  margin-top: 20rpx;
+}
+
+.specItem {
+  width: 160rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border-radius: 7rpx;
+  font-size: 30rpx;
+  border: 1rpx solid #cccccc;
+  box-sizing: border-box;
+  color: #333;
+  margin: 30rpx 20rpx 0 20rpx;
+}
+
+.specItemOn {
+  color: #ff9b39;
+  border: 1rpx solid #ff9b39;
+}
+
+.specBoxPriceBox {
+  height: 100rpx;
+  line-height: 100rpx;
+  border-top: 1rpx solid #cccccc;
+  background-color: #f2f2f2;
+  padding: 0 40rpx;
+  margin-top: 35rpx;
+}
+
+.specBoxPrice {
+  font-size: 34rpx;
+  color: #e60012;
+  font-weight: bold;
+}
+
+.specBoxPriceBox .goodNumBtn {
+  margin-top: 28rpx;
+}

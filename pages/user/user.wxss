@@ -1,0 +1,61 @@
+/* pages/user/user.wxss */
+/*头部背景色*/
+.userBg{
+  width: 100%;
+  height: 260rpx;
+  margin-bottom: 107rpx;
+}
+.userHeaderBox{
+  position: absolute;
+  top: 187rpx;
+  left: 50%;
+  width: 710rpx;
+  height: 250rpx;
+  background-color: #fff;
+  margin-left: -355rpx;
+  border-radius: 16rpx;
+  text-align: center;
+  font-size: 36rpx;
+  color: #333;
+  padding-top: 80rpx;
+}
+
+.userAvatarBox{
+  position: absolute;
+  top: -60rpx;
+  left: 50%;
+  margin-left: -60rpx;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 2rpx solid #ccccccs;
+  box-sizing: border-box;
+}
+.userAvatar{
+  width: 116rpx;
+  height: 116rpx;
+  border-radius: 50%;
+}
+
+/*操作栏*/
+.lineBox{
+  width: 710rpx;
+  margin: 107rpx auto 0 auto;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 0 13rpx;
+  box-sizing: border-box;
+}
+.line{
+  border-bottom: 1rpx solid #e6e6e6;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.lineIcon{
+  width: 16rpx;
+  height: 30rpx;
+  margin-top: 35rpx;
+  margin-right: 27rpx;
+}

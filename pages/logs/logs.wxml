@@ -1,0 +1,14 @@
+<view class="container content loginContent">
+    <image class="avatarImg" src="../image/appIcon.png"></image>
+    <view class="avatarName">便利店</view>
+    <view class="loginBox">
+        <view class="loginTitle">登录后应用将获得以下权限</view>
+        <view class="loginText">
+            <view class="loginDian"></view>
+            获得你的公开信息（昵称、头像等）
+        </view>
+    </view>
+    <button class="login-btn" openType="getUserInfo" lang="zh_CN" bindgetuserinfo="authorLogin" report-submit="true">
+        授权登录
+    </button>
+</view>

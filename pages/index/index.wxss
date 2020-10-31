@@ -1,0 +1,90 @@
+/* pages/component/nav/nav.wxss */
+@import "shopping.wxss";
+
+.VerticalNav.nav {
+  width: 200rpx;
+  white-space: initial;
+}
+
+.seek {
+  position: fixed;
+  z-index: 99999;
+  top: 70rpx;
+  width: 500rpx;
+  opacity: 0.6;
+
+}
+
+.deleteimg {
+  width: 50rpx;
+  height: 50rpx;
+  position: relative;
+  top: 26rpx;
+  z-index: 99999;
+  right: 16rpx;
+
+}
+
+.huanhang {
+  display: flex;
+  flex-direction: column-reverse;
+  float: left;
+  margin-left: 4rpx;
+}
+
+.VerticalNav.nav .cu-item {
+  width: 100%;
+  text-align: center;
+  background-color: #fff;
+  margin: 0;
+  border: none;
+  height: 50px;
+  position: relative;
+}
+
+.VerticalNav.nav .cu-item.cur {
+  background-color: #f1f1f1;
+}
+
+.VerticalNav.nav .cu-item.cur::after {
+  content: "";
+  border-radius: 50rpx;
+  position: absolute;
+  background-color: currentColor;
+  top: 0;
+  right: 0rpx;
+  bottom: 0;
+  margin: auto;
+
+}
+
+.VerticalBox {
+  display: flex;
+}
+
+.VerticalMain {
+  background-color: #f1f1f1;
+}
+/*配送中gif*/
+.distributionBox{
+  position: fixed;
+  right: 40rpx;
+  bottom: 102rpx;
+  width: 300rpx;
+  height: 88rpx;
+}
+.distributionBg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300rpx;
+  height: 88rpx;
+}
+.distribution{
+  position: absolute;
+  left: 8rpx;
+  top: 4rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}

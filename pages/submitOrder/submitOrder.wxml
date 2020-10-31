@@ -1,0 +1,133 @@
+<!--pages/submitOrder/submitOrder.wxml-->
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
+	<view slot="backText">返回</view>
+	<view slot="content">确认订单</view>
+</cu-custom>
+<form bindsubmit="formSubmit" bindreset="formReset">
+	<!-- 选择发货方式 -->
+	<radio-group class="block" data-deliverypay="{{options.deliverypay}}" data-money="{{options.money}}" bindchange="radioChange">
+		<view class="cu-form-group">
+			<view>
+				<radio checked value="2" class="orange"></radio>
+			</view>
+			<text class="indlee text-black">自取</text>
+			<view class="peisong">
+				<radio value="1" class="orange"></radio>
+			</view>
+			<text class="indlee text-black">配送</text>
+		</view>
+	</radio-group>
+	<!-- 联系方式 只有自取的时候才显示 -->
+	<view class="cu-form-group" wx:if="{{value == 2}}" style="margin-top: 4rpx;">
+		<view class="title">联系方式</view>
+		<input maxlength="11" name="phone" placeholder="输入联系方式" value="{{phoneuser}}"></input>
+		<view class="cu-capsule radius">
+			<view class="cu-tag bg-blue">
+				+86
+			</view>
+			<view class="cu-tag line-blue">
+				中国大陆
+			</view>
+		</view>
+	</view>
+	<!-- 预约配送 -->
+	<!--地址-->
+	<view class="addressBox boxShadow" wx:if="{{value == 1}}" style="margin-top: 15rpx;background-color: var(--orange);">
+		<view class="addressTitle">订单配送至</view>
+		<view class="addressContent" bindtap="jumpAddress">
+			<view class="addressLocation">
+				{{codes == ''?'新增收货地址':city + content}}
+				<image class="addressLocationIcon" src="../image/right.png"></image>
+			</view>
+		</view>
+		<view class="addressTime floatClear">
+			<text class="floatLeft">收货人:{{username}}</text>
+			<text class="floatRight" style="margin-left: 79rpx;">联系方式:{{phone}}</text>
+		</view>
+	</view>
+	<!-- 订单数量 -->
+	<view class="padding-top" wx:for="{{order}}" id="main-{{index}}">
+		<view class="cu-list menu-avatar">
+			<view class="cu-item" style="height:150rpx;">
+				<view class="cu-avatar radius lg" style="background-image:url({{img}}{{item.image}});width:110rpx;height:110rpx;flote:left;"></view>
+				<view class="content" style="width:74%;height:100%;">
+					<view class="text-pink mamepyte" style="height:75rpx;line-height:75rpx;">
+						<text   class="text-grey">{{item.commodityname}} <text>x{{item.num}}</text></text>
+					</view>
+					<view class="text-gray text-sm flex cooty">
+						<text style="font-size:30rpx;" class="text-cut">¥{{item.cspecification}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<!-- 订单备注 -->
+	<view class="cu-form-group" style="margin-top: 4rpx;">
+		<view class="title">买家备注</view>
+		<input name="remark" placeholder="对本次交易的说明(选填)"></input>
+	</view>
+	<!-- 配送费用 -->
+	<view class="cu-form-group" wx:if="{{value == 1}}" style="margin-top: 4rpx;">
+		<view class="title">配送费</view>
+		<input disabled="true" style="text-align: right;" placeholder="¥{{options.deliverypay}}元"></input>
+	</view>
+	<!-- 总价格 -->
+	<view class="cu-form-group" style="margin-bottom:110rpx;">
+		<!-- <view class="title">配送费</view> -->
+		<input disabled="true" style="text-align: right;" placeholder="共{{options.county}}件商品,应付¥{{options.money}}元"></input>
+	</view>
+	<!-- 总价 -->
+	<radio-group class="block" style="position:relative;bottom:105rpx" bindchange="paymoney">
+		<view class="cu-list menu" style="margin-top: 58rpx;">
+			<view class="cu-item">
+				<view class="content">
+					<image src="../image/paywx.png" class="png" mode="aspectFit"></image>
+					<text class="text-grey centre">在线付款</text>
+				</view>
+				<radio value="2" class="orange"></radio>
+			</view>
+		</view>
+		<view class="cu-list menu" style="margin-top: 4rpx;">
+			<view class="cu-item">
+				<view class="content">
+					<image src="../image/cash.png" class="png" mode="aspectFit"></image>
+					<text class="text-grey centre">货到付款</text>
+				</view>
+				<radio checked value="3" class="orange"></radio>
+			</view>
+		</view>
+	</radio-group>
+	<!-- 支付 -->
+
+
+	<view class="cu-bar bg-white tabbar border shop dibu">
+		<view style="margin-left:17rpx"><text>共{{options.county}}件商品</text> <text>总价:<text style="font-weight:bold;">¥{{moneys}}元</text></text></view>
+		<view class="btn-group">
+			<button formType="submit" style="width: 177rpx;min-height: 60rpx;left:110rpx;" class="cu-btn bg-red round shadow-blur ">生成订单</button>
+		</view>
+	</view>
+	<!-- 隐藏域 -->
+	<input hidden="true" name="type" value="{{type}}"></input>
+	<!--订单状态 -->
+	<input hidden="true" name="msg" value="{{msg}}"></input>
+	<!--订单提示 -->
+	<input hidden="true" name="moneys" value="{{moneys}}"></input>
+	<!--总价格-->
+	<input hidden="true" name="orderstatus" value="{{value}}"></input>
+	<!--订单配送状态-->
+	<input hidden="true" name="paytype" value="{{paytype}}"></input>
+	<!--订单支付状态-->
+	<input hidden="true" name="citycontent" value="{{city + content}}"></input>
+	<!--收货地址-->
+	<input hidden="true" name="username" value="{{username}}"></input>
+	<!--收货地址-->
+	<input hidden="true" name="namephone" value="{{phone}}"></input>
+	<!--收货地址-->
+	<input hidden="true" name="addresid" value="{{addresid}}"></input>
+	<!--收货id-->
+	<input hidden="true" name="deliverypay" value="{{options.deliverypay}}"></input>
+	<!--配送费用-->
+	<!-- 懒加载 -->
+			<image wx:if="{{jiazai}}" style="height: 209rpx;position: fixed;top: 520rpx;" src="../image/loading-white.gif" mode="aspectFit" class="gif-white response"></image>
+</form>

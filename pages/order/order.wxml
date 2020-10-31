@@ -1,0 +1,10 @@
+<!--pages/order/order.wxml-->
+<cu-custom bgColor="bg-white" isBack="{{true}}" class="action">
+	<view slot="content" style='color:block'>订单列表</view>
+</cu-custom>
+<!-- 操作条 -->
+<scroll-view scroll-x class="bg-white nav" style="margin-top: 4rpx;" scroll-with-animation scroll-left="{{scrollLeft}}">
+  <view class="cu-item {{index==TabCur?'text-green cur':''}}" wx:for="{{listod}}" wx:key bindtap="tabSelect" data-id="{{index}}">
+    {{item.name}}
+  </view>
+</scroll-view>
